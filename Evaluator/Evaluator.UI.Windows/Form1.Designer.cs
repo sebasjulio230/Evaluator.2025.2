@@ -50,6 +50,11 @@ namespace Evaluator.UI.Windows
                     btn.Text = text;
                     btn.Dock = System.Windows.Forms.DockStyle.Fill;
                     btn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+
+                    // Assign blue only if it is not a number
+                    if (!int.TryParse(text, out _))
+                        btn.BackColor = System.Drawing.Color.SkyBlue;
+
                     btn.Click += Button_Click;
                     this.tableLayout.Controls.Add(btn, c, r);
                 }
@@ -61,10 +66,11 @@ namespace Evaluator.UI.Windows
             this.btnEqual.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnEqual.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.btnEqual.Height = 50;
+            this.btnEqual.BackColor = System.Drawing.Color.SkyBlue; // Blue background color
             this.btnEqual.Click += BtnEqual_Click;
 
             // Form1
-            this.ClientSize = new System.Drawing.Size(400, 500);
+            this.ClientSize = new System.Drawing.Size(700, 400);
             this.Controls.Add(this.tableLayout);
             this.Controls.Add(this.btnEqual);
             this.Controls.Add(this.txtDisplay);
@@ -78,7 +84,7 @@ namespace Evaluator.UI.Windows
             var btn = sender as Button;
             if (btn == null) return;
 
-            switch (btn.Text.Trim()) // Trim elimina espacios
+            switch (btn.Text.Trim()) // Trim removes spaces
             {
                 case "Clear":
                     txtDisplay.Text = string.Empty;
