@@ -55,12 +55,13 @@ namespace Evaluator.UI.Windows
                     if (!int.TryParse(text, out _))
                         btn.BackColor = System.Drawing.Color.SkyBlue;
 
+
                     btn.Click += Button_Click;
                     this.tableLayout.Controls.Add(btn, c, r);
                 }
             }
 
-            // Botón '=' separado abajo
+            // Separate = button below
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnEqual.Text = "=";
             this.btnEqual.Dock = System.Windows.Forms.DockStyle.Bottom;
